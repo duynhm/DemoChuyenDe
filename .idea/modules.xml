@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NotificationSystem.iml" filepath="$PROJECT_DIR$/NotificationSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demodatabinding/demodatabinding.iml" filepath="$PROJECT_DIR$/demodatabinding/demodatabinding.iml" />
       <module fileurl="file://$PROJECT_DIR$/demoretrofit/demoretrofit.iml" filepath="$PROJECT_DIR$/demoretrofit/demoretrofit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvp/mvp.iml" filepath="$PROJECT_DIR$/mvp/mvp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvvm/mvvm.iml" filepath="$PROJECT_DIR$/mvvm/mvvm.iml" />
     </modules>
   </component>
 </project>

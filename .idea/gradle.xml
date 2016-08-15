@@ -9,14 +9,20 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/demodatabinding" />
             <option value="$PROJECT_DIR$/demoretrofit" />
+            <option value="$PROJECT_DIR$/mvp" />
+            <option value="$PROJECT_DIR$/mvvm" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/demodatabinding" />
             <option value="$PROJECT_DIR$/demoretrofit" />
+            <option value="$PROJECT_DIR$/mvp" />
+            <option value="$PROJECT_DIR$/mvvm" />
           </set>
         </option>
       </GradleProjectSettings>

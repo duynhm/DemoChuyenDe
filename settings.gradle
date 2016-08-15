@@ -1,1 +1,1 @@
-include ':app', ':demoretrofit'
+include ':app', ':demoretrofit', ':demodatabinding', ':mvvm', ':mvp'
