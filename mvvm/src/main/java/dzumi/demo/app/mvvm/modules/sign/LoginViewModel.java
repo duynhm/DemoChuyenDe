@@ -1,12 +1,15 @@
 package dzumi.demo.app.mvvm.modules.sign;
 
 import android.content.Context;
-import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
+import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.Toast;
 
+import dzumi.demo.app.mvvm.base.BaseResponse;
 import dzumi.demo.app.mvvm.base.BaseViewModel;
 import dzumi.demo.app.mvvm.base.ViewModel;
+import dzumi.demo.app.mvvm.databinding.LayoutSampleLogin2Binding;
 import dzumi.demo.app.mvvm.network.APIService;
 import dzumi.demo.app.mvvm.network.NetworkRequest;
 import rx.Subscription;
@@ -23,9 +26,11 @@ public class LoginViewModel extends BaseViewModel implements ViewModel {
 
     Subscription subscription;
     APIService apiService;
-    public LoginViewModel(Context mContext, APIService apiService) {
+    LayoutSampleLogin2Binding binding;
+    public LoginViewModel(Context mContext, APIService apiService, LayoutSampleLogin2Binding binding) {
         super(mContext);
         this.apiService = apiService;
+        this.binding = binding;
         email = new ObservableField<>("");
         password = new ObservableField<>("");
 
@@ -34,14 +39,36 @@ public class LoginViewModel extends BaseViewModel implements ViewModel {
     }
 
 
-    public void doLogin(View v){
+    public void doLogin(View v) {
+        User user = new User();
+        user.setEmail(email.get());
+        user.setPassword(password.get());
+        if (validate(user))
+            subscription = NetworkRequest.performAsyncRequest(mContext,
+                    apiService.login(user),
+                    data -> {
+                        if (data.getStatus() == BaseResponse.STATUS_OK) {
+                            //lưu sharedPreference
+
+                        }
+                        return data;
+                    },
+                    next -> {
+                        if (next.getStatus() == BaseResponse.STATUS_OK)
+                            Toast.makeText(mContext, "Success", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(mContext, next.getStatus(), Toast.LENGTH_SHORT).show();
+                    }
+            );
     }
+
     @Override
     public void destroy() {
         if (subscription != null) {
             subscription.unsubscribe();
             subscription = null;
         }
+
     }
 
     public boolean validate(User user) {

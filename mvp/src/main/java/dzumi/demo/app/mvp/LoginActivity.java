@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements CallbackLoginAct
                 String password = edtPassword.getText().toString();
 
                 User user = new User();
-                user.setUserName(email);
+                user.setEmail(email);
                 user.setPassword(password);
 
                 loginPresenter.login(user);

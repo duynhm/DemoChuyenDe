@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import dzumi.demo.app.mvvm.BaseApplication;
 import dzumi.demo.app.mvvm.R;
 import dzumi.demo.app.mvvm.databinding.LayoutSampleLogin2Binding;
+import dzumi.demo.app.mvvm.db.provider.IDataProvider;
 import dzumi.demo.app.mvvm.network.APIService;
 
 
@@ -17,15 +18,22 @@ public class LoginActivity extends AppCompatActivity  {
 
     @Inject
     APIService apiService;
+
+    @Inject
+    IDataProvider iDataProvider;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ((BaseApplication)getApplication()).getAppComponent().inject(this);
+        ((BaseApplication)getApplication()).
+                getAppComponent().inject(this);
 
         LayoutSampleLogin2Binding binding = DataBindingUtil.setContentView(this,R.layout.layout_sample_login2 );
-        LoginViewModel loginViewModel = new LoginViewModel(this, apiService);
+        LoginViewModel loginViewModel = new LoginViewModel(this, apiService, binding);
         binding.setViewModel(loginViewModel);
+
+
     }
 
 }

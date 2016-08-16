@@ -8,9 +8,15 @@ import android.content.Context;
 public class LoginPresenter implements ILoginPresenter {
     Context mContext;
     CallbackLoginActivity callbackLoginActivity;
-    public LoginPresenter(Context context, CallbackLoginActivity callbackLoginActivity) {
+    public LoginPresenter(Context context,
+                          CallbackLoginActivity callbackLoginActivity) {
         mContext = context;
         this.callbackLoginActivity = callbackLoginActivity;
+    }
+
+//    @Deprecated
+    public LoginPresenter(LoginActivity loginActivity){
+
     }
 
     @Override
@@ -36,14 +42,16 @@ public class LoginPresenter implements ILoginPresenter {
         boolean valid = true;
 
 
-        if (user.email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(user.email).matches()) {
+        if (user.email.isEmpty() ||
+                !android.util.Patterns.EMAIL_ADDRESS.matcher(user.email).matches()) {
             callbackLoginActivity.setErrorUsername("enter a valid email address");
             valid = false;
         } else {
             callbackLoginActivity.setErrorUsername(null);
         }
 
-        if (user.password.isEmpty() || user.password.length() < 4 || user.password.length() > 10) {
+        if (user.password.isEmpty() ||
+                user.password.length() < 4 || user.password.length() > 10) {
             callbackLoginActivity.setErrorPassword("between 4 and 10 alphanumeric characters");
             valid = false;
         } else {
